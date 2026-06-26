@@ -1,12 +1,10 @@
 
 import pygame
 
+from constats import *
 from game_mape import generate_mape
+from Moveable_sprite import Player_sprite
 
-from Base_sprite import Base_moveable
-
-SCREEN_SIZE = (800, 600)
-back_ground_color = pygame.color.Color(255, 255, 255)
 
 def take_events(pg):
     for event in pg.event.get():
@@ -36,7 +34,7 @@ def next_move(keys, dt, ds = 10):
         return step
     return None
 
-def game():
+def run_game():
    
 
     pygame.init()
@@ -46,10 +44,8 @@ def game():
     pygame.display.set_caption("PAC MAN")
 
     is_running = True
-    dt = 0.1
-    speed = 100
-    
-    player_pac = Base_moveable()
+      
+    player_pac = Player_sprite()
     player_pac_group = pygame.sprite.Group(player_pac)
     game_map = generate_mape(screen)
    
@@ -60,7 +56,7 @@ def game():
         is_running = take_events(pygame)
         dt = max(0.001, min( 0.1, clock.tick(50)/1000 ) )
 
-        player_pac.move(next_move(is_running, dt, speed))
+        player_pac.update(next_move(is_running, dt, SPEED), game_map)
 
         game_map.draw(screen)
         player_pac_group.draw(screen)
