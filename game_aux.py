@@ -1,4 +1,3 @@
-
 import random
 from pygame import sprite
 from pygame import image
@@ -20,18 +19,20 @@ def take_events(pg):
     
     return True
 
+
 def take_events_window_quit(pg, list_events):
     for event in list_events:
         if event.type == pg.QUIT:
             return False 
     return True
 
+
 def take_events_window_pause(pg, list_events):           
     for event in list_events:
         if event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
             return True   
     return False
-# 
+
 
 def next_move(keys, dt, ds = 10):
     if type(keys) == tuple:
