@@ -7,16 +7,8 @@ from pygame import Rect
 from constats import *
 from Base_sprite import Base_wall
 
-def take_events(pg):
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            return False
-             
-    keys = pg.key.get_pressed()
-
-    if keys[pg.K_ESCAPE]:
-        return False
-    
+def take_events(pg):            
+    keys = pg.key.get_pressed()  
     if keys[pg.K_w]:
         return UP
     if keys[pg.K_a]:
@@ -27,6 +19,19 @@ def take_events(pg):
         return DOWN
     
     return True
+
+def take_events_window_quit(pg, list_events):
+    for event in list_events:
+        if event.type == pg.QUIT:
+            return False 
+    return True
+
+def take_events_window_pause(pg, list_events):           
+    for event in list_events:
+        if event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
+            return True   
+    return False
+# 
 
 def next_move(keys, dt, ds = 10):
     if type(keys) == tuple:

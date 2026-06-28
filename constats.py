@@ -20,6 +20,7 @@ DOWN = (0, 1)
 GAME_OVER_FONT_SIZE = 100
 PAUSE_FONT_SIZE = 70
 PADDING = 15
-grey_color = pygame.color.Color(200,200,200)
+grey_color = pygame.color.Color(210,210,210)
 red_color = pygame.color.Color(240, 40, 40)
-
+green_color = pygame.color.Color(40, 240, 40)
+black_color = pygame.color.Color(80,80,80)
