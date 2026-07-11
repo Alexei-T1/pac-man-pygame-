@@ -44,7 +44,7 @@ class Player_sprite(Base_moveable):
     def update(self, dt, speed, keys = None, group_walls = None, group_enemeis = None):
         if self.collision_take(group_enemeis):
             return True
-        if type(keys) != tuple:
+        if keys == None:
             return False
         self.set_game_way(keys)
         step = next_move(self.way, dt, speed)

@@ -18,7 +18,7 @@ def take_events(pg):
     if keys[pg.K_s]:
         return DOWN
     
-    return True
+    return None
 
 def take_events_window_quit(pg, list_events):
     for event in list_events:
