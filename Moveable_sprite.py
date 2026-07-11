@@ -90,12 +90,12 @@ class Player_sprite(Base_moveable):
 
 
 class Ghost_sprite(Player_sprite):
-    def __init__(self, x = 150, y= 0, type_player = GHOST):
-        super().__init__()
+    def __init__(self, x = 150, y= 0):
+        super().__init__(type_player = GHOST)
 
         self.current_x = x 
         self.current_y = y
-        self.player = type_player
+
         self.rect = self.image.get_rect(left = x, top = y)
 
         self.list_way = (LEFT, RIGHT, UP, DOWN)
