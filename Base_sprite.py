@@ -26,10 +26,10 @@ class Base_moveable(Sprite):
         self.rect = self.image.get_rect(left = x, top = y)
 
     def move(self, step = None):
-        
-        if step == None or (step[0] == self.current_x and step[1] == self.current_y):
-            return False
         x, y = step
+        if step == None or (x == 0 and y == 0):
+            return False
+        
         self.current_x += x
         self.current_y += y
         self.rect = self.image.get_rect(left = self.current_x, top = self.current_y)
