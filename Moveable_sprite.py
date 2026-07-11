@@ -140,11 +140,15 @@ class Ghost_sprite(Player_sprite):
         return True
 
     def check_collision(self, temp, group_walls, group_sprites_not_this, dt, speed):
-        if temp:  
+        if temp:
+            before_break = 100  
             while self.get_game_collision(group_walls, temp) or self.get_game_collision(group_sprites_not_this, temp):
+                before_break -= 1
                 self.change_way_random()
                 step = next_move(self.way, dt, speed)
                 self.pre_step_temp(step, group_walls)
+                if not before_break:
+                    break
 
     def check_ghost_collision(self, group_enemeis):
         group_sprites_not_this = sprite.Group(*group_enemeis)
